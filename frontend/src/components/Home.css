@@ -1,0 +1,56 @@
+.adoptText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 32px;
+  position: absolute;
+  width: 584px;
+  height: 215px;
+  left: 120px;
+  top: 300px;
+}
+
+.adoptText button {
+  border-radius: 6px;
+  margin-right: 10px;
+}
+
+#adoptButton {
+  background-color: #ff6584;
+  color: white;
+}
+
+.giveAwayText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0px;
+  gap: 32px;
+  width: 1169px;
+  height: 236px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.giveAwayTextParagraph {
+  text-align: right;
+  width: 1000px;
+}
+
+.giveAwayText button {
+  border-radius: 6px;
+}
+
+.bottomParagraph {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 24px;
+
+  width: 1168px;
+  height: 191px;
+}

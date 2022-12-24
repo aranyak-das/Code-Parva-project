@@ -1,0 +1,45 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(219, 221, 221);
+  padding: 20px 80px;
+}
+
+#navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#navbar li {
+  list-style: none;
+  padding: 0 20px;
+  position: relative;
+}
+
+#navbar li a {
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: black;
+  transition: 0.3s ease-in-out;
+}
+
+#navbar li a:hover {
+  color: palevioletred;
+}
+
+.nav-icons {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+}
+
+.nav-icons a {
+  color: black;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-evenly;
+}
