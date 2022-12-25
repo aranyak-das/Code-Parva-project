@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./AdoptForm.css";
+import axios from "axios";
 
 const AdoptForm = () => {
   const [formState, setFormState] = useState({
@@ -10,9 +11,19 @@ const AdoptForm = () => {
     phone: "",
   });
 
+  const [petType, setPetType] = useState("");
+  const [breed, setBreed] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+
   const handleChange = (event) => {
     // const { name, value } = event.target;
-    setFormState({ ...formState, [event.target.name]: event.target.value });
+    setPetType({ ...petType, [event.target.name]: event.target.value });
+    setBreed({ ...breed, [event.target.name]: event.target.value });
+    setFullName({ ...fullName, [event.target.name]: event.target.value });
+    setEmail({ ...email, [event.target.name]: event.target.value });
+    setPhone({ ...phone, [event.target.name]: event.target.value });
   };
 
   //   const handleSubmit = async (event) => {
@@ -39,15 +50,29 @@ const AdoptForm = () => {
   //     }
   //   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    fetch("http://localhost:5000/adopt_users", {
-      method: "POST",
-      body: JSON.stringify(formState),
-    })
-      .then((res) => res.json())
-      .then((response) => console.log("Success:", JSON.stringify(response)))
-      .catch((error) => console.error("Error:", error));
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   fetch("http://localhost:5000/adopt_users", {
+  //     method: "POST",
+  //     body: JSON.stringify(formState),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((response) => console.log("Success:", JSON.stringify(response)))
+  //     .catch((error) => console.error("Error:", error));
+  // };
+
+  const handleSubmit = () => {
+    axios
+      .post("http://localhost:5000/adopt_users", {
+        petType: petType,
+        breed: breed,
+        fullName: fullName,
+        email: email,
+        phone: phone,
+      })
+      .then(() => {
+        alert("successful insert");
+      });
   };
 
   return (
@@ -59,7 +84,7 @@ const AdoptForm = () => {
           Pet Type:
           <select
             name="petType"
-            value={formState.petType}
+            value={petType.petType}
             onChange={handleChange}
           >
             <option value="">--Please choose an option--</option>
@@ -73,19 +98,19 @@ const AdoptForm = () => {
           Breed:
           <select
             name="breed"
-            value={formState.breed}
+            value={breed.breed}
             onChange={handleChange}
-            disabled={formState.petType === ""}
+            disabled={petType.petType === ""}
           >
             <option value="">--Please choose an option--</option>
-            {formState.petType === "dog" && (
+            {petType.petType === "dog" && (
               <React.Fragment>
                 <option value="lab">Lab</option>
                 <option value="pug">Pug</option>
                 <option value="doberman">Doberman</option>
               </React.Fragment>
             )}
-            {formState.petType === "cat" && (
+            {petType.petType === "cat" && (
               <React.Fragment>
                 <option value="siamese">Siamese</option>
                 <option value="persian">Persian</option>
@@ -102,7 +127,7 @@ const AdoptForm = () => {
           <input
             type="text"
             name="fullName"
-            value={formState.fullName}
+            value={fullName.fullName}
             onChange={handleChange}
           />
         </label>
@@ -113,7 +138,7 @@ const AdoptForm = () => {
           <input
             type="email"
             name="email"
-            value={formState.email}
+            value={email.email}
             onChange={handleChange}
           />
         </label>
@@ -124,14 +149,12 @@ const AdoptForm = () => {
           <input
             type="tel"
             name="phone"
-            value={formState.phone}
+            value={phone.phone}
             onChange={handleChange}
           />
         </label>
       </div>
-      <button type="submit" /*onClick={handleSubmit}*/>
-        Request for Give Away
-      </button>
+      <button type="submit" /*onClick={handleSubmit}*/>Request to Adopt</button>
     </form>
   );
 };

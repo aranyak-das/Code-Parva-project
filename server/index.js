@@ -6,8 +6,9 @@ const cors = require("cors");
 
 const app = express();
 app.use(cors());
+app.use(express.json());
 app.use(bodyParser.json());
-// app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = mysql2.createConnection({
   host: "localhost",
@@ -15,6 +16,8 @@ const db = mysql2.createConnection({
   password: "1234",
   database: "adopt-form",
 });
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 db.connect((error) => {
   if (error) {
@@ -45,6 +48,11 @@ app.post("/adopt_users", (req, res) => {
   // const { petType, breed, name, email, phone } = req.body;
 
   // const sql = `INSERT INTO adopt_table (Pet Type, breed, Full Name, Email, Phone No.) VALUES (?, ?, ?, ?, ?)`;
+  // const petType = req.body.petType;
+  // const breed = req.body.breed;
+  // const fullName = req.body.fullName;
+  // const email = req.body.email;
+  // const phone = req.body.phone;
   const query =
     "INSERT INTO `adopt-form`.`adopt_table` (`petType`, `breed`, `fullName`, `email`, `phone`) VALUES (?,?,?,?,?)";
   const values = [
