@@ -48,20 +48,35 @@ app.post("/adopt_users", (req, res) => {
   // const { petType, breed, name, email, phone } = req.body;
 
   // const sql = `INSERT INTO adopt_table (Pet Type, breed, Full Name, Email, Phone No.) VALUES (?, ?, ?, ?, ?)`;
-  // const petType = req.body.petType;
-  // const breed = req.body.breed;
-  // const fullName = req.body.fullName;
-  // const email = req.body.email;
-  // const phone = req.body.phone;
+  const petType = req.body.petType;
+  const breed = req.body.breed;
+  const fullName = req.body.fullName;
+  const email = req.body.email;
+  const phone = req.body.phone;
   const query =
     "INSERT INTO `adopt-form`.`adopt_table` (`petType`, `breed`, `fullName`, `email`, `phone`) VALUES (?,?,?,?,?)";
-  const values = [
-    req.body.petType,
-    req.body.breed,
-    req.body.fullName,
-    req.body.email,
-    req.body.phone,
-  ];
+  const values = [petType, breed, fullName, email, phone];
+
+  db.query(query, values, (error, result) => {
+    if (error) {
+      console.error("Error inserting...", error);
+      res.send({ error });
+    } else {
+      console.log("Successfully inserted!");
+      res.send({ success: true });
+    }
+  });
+});
+
+app.post("/give_away_users", (req, res) => {
+  const petType = req.body.petType;
+  const breed = req.body.breed;
+  const fullName = req.body.fullName;
+  const email = req.body.email;
+  const phone = req.body.phone;
+  const query =
+    "INSERT INTO `adopt-form`.`give_away_table` (`petType`, `breed`, `fullName`, `email`, `phone`) VALUES (?,?,?,?,?)";
+  const values = [petType, breed, fullName, email, phone];
 
   db.query(query, values, (error, result) => {
     if (error) {

@@ -3,13 +3,13 @@ import "./AdoptForm.css";
 import axios from "axios";
 
 const AdoptForm = () => {
-  const [formState, setFormState] = useState({
-    petType: "",
-    breed: "",
-    fullName: "",
-    email: "",
-    phone: "",
-  });
+  // const [formState, setFormState] = useState({
+  //   petType: "",
+  //   breed: "",
+  //   fullName: "",
+  //   email: "",
+  //   phone: "",
+  // });
 
   const [petType, setPetType] = useState("");
   const [breed, setBreed] = useState("");
@@ -18,7 +18,6 @@ const AdoptForm = () => {
   const [phone, setPhone] = useState("");
 
   const handleChange = (event) => {
-    // const { name, value } = event.target;
     setPetType({ ...petType, [event.target.name]: event.target.value });
     setBreed({ ...breed, [event.target.name]: event.target.value });
     setFullName({ ...fullName, [event.target.name]: event.target.value });
@@ -71,7 +70,7 @@ const AdoptForm = () => {
         phone: phone,
       })
       .then(() => {
-        alert("successful insert");
+        alert("Registered");
       });
   };
 
