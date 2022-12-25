@@ -14,7 +14,9 @@ function Home() {
         <Link to="/adoptForm">
           <button id="adoptButton">Adopt</button>
         </Link>
-        <button>What all pets do we have ?</button>
+        <Link to="/showPets">
+          <button>What all pets do we have ?</button>
+        </Link>
       </div>
 
       <div className="giveAwayText">

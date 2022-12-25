@@ -28,7 +28,7 @@ db.connect((error) => {
 });
 
 app.get("/api/get", (req, res) => {
-  const query = "SELECT * FROM adopt_table";
+  const query = "SELECT * FROM showpet_table";
   db.query(query, (error, result) => {
     res.send(result);
   });
