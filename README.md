@@ -25,6 +25,6 @@ Give Away a Pet Form:
 The "Give Away a Pet" form will ask the user to fill out a questionnaire and provide their personal details. These details will be validated before the form is submitted. When the user clicks the "Request for Give Away" button, their information will be saved in a local indexed database.
 
 Available Pets:
-When the user clicks the "See Available Pets" button, they will be shown a list of all the pets currently available for adoption. The list will include the pet's name, breed, and age. Initially, there will be a list of 10 dogs and 10 cats. This data can be stored in a JSON file or in a local indexed database.
+When the user clicks the "See Available Pets" button, they will be shown a list of all the pets currently available for adoption. The list will include the pet's name, breed, and age. Initially, there will be a list of 10 pets. This data can be stored in a JSON file or in a local indexed database.
 
 We hope that this marketplace will help bring together loving pet owners and new pet families. Thank you for using our platform!
